@@ -1,9 +1,11 @@
 rules:
 - destination: containerd-api-test
   branches:
-  - name: BRANCH_NAME
+  - name: main
+##  - name: release/1.6
     source:
-      branch: BRANCH_NAME
+      branch: main
+#      branch: release/1.6
       dir:
         - "api/"
         - "go.mod"
