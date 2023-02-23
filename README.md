@@ -16,6 +16,8 @@ Context:
 - [Doc](https://docs.google.com/document/d/1qD0XphQ9NtrQT934Qv38ebMRnD2VQ-CE85TfPPAbiZo/edit#heading=h.59pzk991o8bl)
 - [containerd/containerd#6567](https://github.com/containerd/containerd/issues/6567)
 
+This publisher uses a modified version of the [k8s-publishing-bot](https://github.com/kubernetes/publishing-bot)
+
 ### Steps for Demo :
 
 1. We will be first  running `git-filter-repo` manually , and then pushing the changes. This is a one time task that has to be done
