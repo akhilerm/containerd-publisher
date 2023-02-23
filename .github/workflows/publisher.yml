@@ -1,6 +1,11 @@
 name: Code Publisher
 
 on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'branch to run the workflow in containerd-test'
+	required: false
   push:
     branches:
       - main
