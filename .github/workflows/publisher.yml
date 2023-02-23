@@ -3,7 +3,7 @@ name: Code Publisher
 on:
   push:
     branches:
-      - master
+      - main
 
 
 jobs:
@@ -15,9 +15,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          repository: akhilerm/containerd-test
+          repository: akhilerm/containerd-publisher
           ref: master
-          path: src/github.com/akhilerm/containerd-test
+          path: src/github.com/akhilerm/containerd-publisher
 
       - name: Create required volumes
         run: |
@@ -25,12 +25,12 @@ jobs:
           docker volume create cache
       
       - name: Create token file
-        working-directory: src/github.com/akhilerm/containerd-test
+        working-directory: src/github.com/akhilerm/containerd-publisher
         run: |
           echo ${{ secrets.CONTAINERD_API_TESTING_TOKEN }} >> ctr-configs/token
 
       - name: Run Init repo
-        working-directory: src/github.com/akhilerm/containerd-test
+        working-directory: src/github.com/akhilerm/containerd-publisher
         run: |
           docker run --rm \
             --network host \
@@ -41,7 +41,7 @@ jobs:
             /init-repo --alsologtostderr --config=/etc/ctr-configs/config --rules-file=/etc/ctr-configs/rules
        
       - name: Run publishing bot
-        working-directory: src/github.com/akhilerm/containerd-test
+        working-directory: src/github.com/akhilerm/containerd-publisher
         run: |
           docker run --rm \
             --network host \
