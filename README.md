@@ -16,7 +16,8 @@ Context:
 - [Doc](https://docs.google.com/document/d/1qD0XphQ9NtrQT934Qv38ebMRnD2VQ-CE85TfPPAbiZo/edit#heading=h.59pzk991o8bl)
 - [containerd/containerd#6567](https://github.com/containerd/containerd/issues/6567)
 
-This publisher uses a modified version of the [k8s-publishing-bot](https://github.com/kubernetes/publishing-bot)
+This publisher uses a modified version of the [k8s-publishing-bot](https://github.com/kubernetes/publishing-bot), 
+available at [akhilerm/publishing-bot](https://github.com/akhilerm/publishing-bot/tree/containerd-test)
 
 ### Steps for Demo :
 
