@@ -1,14 +1,15 @@
 name: Code Publisher
 
-on: workflow_dispatch
-#    inputs:
-#      branch:
-#        description: 'branch to run the workflow in containerd-test'
-#	required: false
-#  push:
-#    branches:
-#      - main
-
+on:
+  workflow_dispatch:
+    inputs:
+      containerd_branch:
+        description: 'branch to run the workflow in containerd-test'
+	required: false
+	default: 'main'
+	options:
+	- main
+	- release/1.6
 
 jobs:
   check:
@@ -27,7 +28,14 @@ jobs:
         run: |
           docker volume create local-go-workspace
           docker volume create cache
-      
+     
+      - name: Select the branch needed
+        working-directory: src/github.com/akhilerm/containerd-publisher
+	env:
+	  BRANCH_NAME: ${{ inputs.containerd_branch }}
+	run: |
+          sed -i -e 's@BRANCH_NAME@'"${BRANCH_NAME}"'@g' ctr-configs/rules
+
       - name: Create token file
         working-directory: src/github.com/akhilerm/containerd-publisher
         run: |
